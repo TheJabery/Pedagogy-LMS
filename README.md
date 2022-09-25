@@ -38,6 +38,14 @@ DB_PASSWORD=
 * Run `php artisan db:seed`
 * Start the Laravel server `php artisan serve `
 
+The login Passwords and email 
+```
+The admin= Email=admin@admin.com \ Password= password
+The teacher= Email=admin999@admin.com \ Password= 999999999
+The parent= Email=parent@yahoo.com \ Password= 12345678
+The student= Email=admin123@admin.com \ Password= 123123123
+
+```
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.

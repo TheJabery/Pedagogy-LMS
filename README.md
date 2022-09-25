@@ -7,19 +7,36 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+#### About
+Pedagogy LMS is a Learning Management System that facilitates the creation of educational content by allowing you to manage courses and learning modules. The platform is simple and intuitive and provides features for:
+1. The Teacher
+2. The Student 
+2. The Parent 
+3. The Admin
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+As the name suggests, Pedagogy LMS is built on the latest Laravel framework, and uses various open source packages.
+This application is still in development, if you want to collaborate on the development, send us an email: 
+```
+Angel: man561360@gmail.com
+```
+### Installation
+* Run `git clone https://github.com/LMS-Laravel/LMS-Laravel.git LMS-Laravel`
+* `cd LMS-Laravel` 
+* Run `composer install` (install composer beforehand)
+* From the projects root run `cp .env.example .env`
+* Configure your `.env` file, with:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Database settings
+```
+DB_DATABASE=Pedagogy
+DB_USERNAME=root
+DB_PASSWORD=
+```
+* Run `php artisan key:generate`
+* Run `php artisan migrate`
+* Run `npm install && npm run dev`
+* Run `php artisan db:seed`
+* Start the Laravel server `php artisan serve `
 
 ## Learning Laravel
 

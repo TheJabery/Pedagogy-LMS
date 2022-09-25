@@ -20,8 +20,8 @@ This application is still in development, if you want to collaborate on the deve
 Angel: man561360@gmail.com
 ```
 ### Installation
-* Run `git clone https://github.com/LMS-Laravel/LMS-Laravel.git LMS-Laravel`
-* `cd LMS-Laravel` 
+* Run `git clone https://github.com/TheJabery/Pedagogy-LMS.git`
+* `cd Pedagogy-LMS` 
 * Run `composer install` (install composer beforehand)
 * From the projects root run `cp .env.example .env`
 * Configure your `.env` file, with:

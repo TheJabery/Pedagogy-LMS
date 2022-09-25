@@ -17,7 +17,7 @@ Pedagogy LMS is a Learning Management System that facilitates the creation of ed
 As the name suggests, Pedagogy LMS is built on the latest Laravel framework, and uses various open source packages.
 This application is still in development, if you want to collaborate on the development, send us an email: 
 ```
-Angel: man561360@gmail.com
+Osama aljaberi: man561360@gmail.com
 ```
 ### Installation
 * Run `git clone https://github.com/TheJabery/Pedagogy-LMS.git`

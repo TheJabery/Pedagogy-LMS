@@ -1,6 +1,5 @@
 @extends('layouts.master')
 @section('css')
-    @toastr_css
 @section('title')
     اضافة حصة جديدة
 @stop
@@ -86,7 +85,24 @@
                                 <input class="form-control" name="duration" type="text">
                             </div>
                         </div>
-
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ __('My_Classes_trans.Meeting_id') }} <span class="text-danger">*</span></label>
+                                <input class="form-control" name="meeting_id" type="text">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ __('My_Classes_trans.student_password') }} <span class="text-danger">*</span></label>
+                                <input class="form-control" name="student_password" type="password">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>{{ __('My_Classes_trans.teacher_password') }} <span class="text-danger">*</span></label>
+                                <input class="form-control" name="password" type="password">
+                            </div>
+                        </div>
                     </div>
                     <button class="btn btn-success btn-sm nextBtn btn-lg pull-right"
                         type="submit">{{ trans('Students_trans.submit') }}</button>
@@ -99,7 +115,5 @@
 <!-- row closed -->
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
 
 @endsection

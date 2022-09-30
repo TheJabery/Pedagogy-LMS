@@ -91,46 +91,15 @@ try {
 
 
 
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function edit($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
     public function destroy(Request $request)
     {
-        // try {
-
-        //     $info = online_classe::find($request->id);
-
-        //     if($info->integration == true){
-        //         $meeting = Zoom::meeting()->find($request->meeting_id);
-        //         $meeting->delete();
-        //        // online_classe::where('meeting_id', $request->id)->delete();
-        //         online_classe::destroy($request->id);
-        //     }
-        //     else{
-        //        // online_classe::where('meeting_id', $request->id)->delete();
-        //         online_classe::destroy($request->id);
-        //     }
-
-        //     toast()->success(trans('messages.Delete'));
-        //     return redirect()->route('online_classes.index');
-        // } catch (\Exception $e) {
-        //     return redirect()->back()->with(['error' => $e->getMessage()]);
-        // }
+        try {
+            online_classe::findOrFail($request->id)->delete();
+            toast()->success(trans('messages.Delete'));
+            return redirect()->route('online_zoom_classes.index');
+        } catch (\Exception $e) {
+            return redirect()->back()->with(['error' => $e->getMessage()]);
+        }
 
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\Teachers\dashboard;
 use App\Http\Controllers\Teachers\dashboard\StudentController;
 use App\Http\Controllers\Teachers\dashboard\ProfileController;
 use App\Http\Controllers\Teachers\dashboard\QuizzController;
+use App\Http\Controllers\Teachers\dashboard\OnlineZoomClassesController;
 use App\Http\Controllers\Teachers\dashboard\QuestionController;
 use App\Http\Controllers\Teachers\TeacherDashboardController;
 
@@ -50,9 +51,9 @@ Route::group(
 
        //==============================OnlineZoomClasses===========================
 
-    //  Route::resource('online_zoom_classes', 'OnlineZoomClassesController');
-    //  Route::get('/indirect', 'OnlineZoomClassesController@indirectCreate')->name('indirect.teacher.create');
-    //  Route::post('/indirect', 'OnlineZoomClassesController@storeIndirect')->name('indirect.teacher.store');
+   Route::resource('online_zoom_classes', OnlineZoomClassesController::class);
+    Route::post('Start_lesson', [OnlineZoomClassesController::class ,'startLesson'])->name('startLesson');
+
 
 
        //==============================profile===========================

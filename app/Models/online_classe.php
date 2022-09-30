@@ -13,6 +13,7 @@ class online_classe extends Model
         'Classroom_id',
         'section_id',
         'created_by',
+        'teacher_id',
         'meeting_id',
         'topic',
         'start_at',

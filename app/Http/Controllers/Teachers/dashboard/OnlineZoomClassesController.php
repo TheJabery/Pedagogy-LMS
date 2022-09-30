@@ -11,10 +11,10 @@ use MacsiDigital\Zoom\Facades\Zoom;
 
 class OnlineZoomClassesController extends Controller
 {
-    use MeetingZoomTrait;
     public function index()
     {
-        $online_classes = online_classe::where('created_by',auth()->user()->email)->get();
+
+        $online_classes = online_classe::where('teacher_id',auth()->user()->id)->get();
         return view('pages.Teachers.dashboard.online_classes.index', compact('online_classes'));
     }
 
@@ -35,73 +35,52 @@ class OnlineZoomClassesController extends Controller
 
     public function store(Request $request)
     {
+      // return auth()->user()->id;
         try {
 
-            $meeting = $this->createMeeting($request);
+            $online_classe= online_classe::create([
+                 'Grade_id' => $request->Grade_id,
+                 'Classroom_id' => $request->Classroom_id,
+                 'section_id' => $request->section_id,
+                 'created_by' => auth()->user()->Name,
+                 'teacher_id' => auth()->user()->id,
+                 'meeting_id' => $request->meeting_id,
+                 'topic' => $request->topic,
+                 'start_at' => $request->start_time,
+                 'duration' => $request->duration,
+                 'password' => $request->password,
+                 'student_password' => $request->student_password,
+             ]);
 
-            online_classe::create([
-                'integration' => true,
-                'Grade_id' => $request->Grade_id,
-                'Classroom_id' => $request->Classroom_id,
-                'section_id' => $request->section_id,
-                'created_by' => auth()->user()->email,
-                'meeting_id' => $meeting->id,
-                'topic' => $request->topic,
-                'start_at' => $request->start_time,
-                'duration' => $meeting->duration,
-                'password' => $meeting->password,
-                'start_url' => $meeting->start_url,
-                'join_url' => $meeting->join_url,
-            ]);
-            toast()->success(trans('messages.success'));
-            return redirect()->route('online_zoom_classes.index');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
+             toast()->success(trans('messages.success'));
+             return redirect()->route('online_zoom_classes.index');
+         } catch (\Exception $e) {
+             return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+         }
     }
 
-    public function storeIndirect(Request $request)
-    {
-        try {
-            online_classe::create([
-                'integration' => false,
-                'Grade_id' => $request->Grade_id,
-                'Classroom_id' => $request->Classroom_id,
-                'section_id' => $request->section_id,
-                'created_by' => auth()->user()->email,
-                'meeting_id' => $request->meeting_id,
-                'topic' => $request->topic,
-                'start_at' => $request->start_time,
-                'duration' => $request->duration,
-                'password' => $request->password,
-                'start_url' => $request->start_url,
-                'join_url' => $request->join_url,
-            ]);
-            toast()->success(trans('messages.success'));
-            return redirect()->route('online_zoom_classes.index');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
-        }
 
+
+    public function startLesson(Request $request)
+    {
+try {
+      $lesson = online_classe::findorfail($request->id);
+     \Bigbluebutton::create([
+        'meetingID' => $lesson->id,
+        'meetingName' => $lesson->topic,
+        'attendeePW' => $lesson->student_password,
+        'moderatorPW' => $lesson->password,
+    ]);
+} catch (\Exception $e) {
+    return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+}
     }
 
 
     public function destroy(Request $request,$id)
     {
         try {
-
-            $info = online_classe::find($id);
-
-            if($info->integration == true){
-                $meeting = Zoom::meeting()->find($request->meeting_id);
-                $meeting->delete();
-                online_classe::destroy($id);
-            }
-            else{
-
-                online_classe::destroy($id);
-            }
-
+            online_classe::findOrFail($request->id)->delete();
             toast()->success(trans('messages.Delete'));
             return redirect()->route('online_zoom_classes.index');
         } catch (\Exception $e) {

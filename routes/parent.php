@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Students\dashboard\ExamsController;
+use App\Http\Controllers\Students\dashboard\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,20 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 //==============================Translate all pages============================
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:parent']
-    ], function () {
+// Route::group(
+//     [
+//         'prefix' => LaravelLocalization::setLocale(),
+//         'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath', 'auth:parent']
+//     ], function () {
 
-    //==============================dashboard============================
-    Route::get('/parent/dashboard', function () {
-        return view('pages.parents.dashboard');
-    })->name('dashboard.parents');
+//     //==============================dashboard============================
+//     Route::get('/parent/dashboard', function () {
+//         return view('pages.parents.dashboard');
+//     })->name('dashboard.parents');
 
-    Route::group(['namespace' => 'Students\dashboard'], function () {
-        Route::resource('student_exams', ExamsController::class);
-        Route::resource('profile-student', ProfileController::class);
-    });
 
-});
+//         Route::resource('student_exams', ExamsController::class);
+//         Route::resource('profile-student', ProfileController::class);
+
+
+// });

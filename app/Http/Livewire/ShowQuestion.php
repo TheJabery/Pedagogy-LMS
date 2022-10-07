@@ -42,7 +42,7 @@ class ShowQuestion extends Component
                 $stuDegree->score = 0;
                 $stuDegree->abuse = '1';
                 $stuDegree->save();
-                toastr()->error('تم إلغاء الاختبار لإكتشاف تلاعب بالنظام');
+                toast()->error('تم إلغاء الاختبار لإكتشاف تلاعب بالنظام');
                 return redirect('student_exams');
             } else {
 
@@ -59,7 +59,7 @@ class ShowQuestion extends Component
         if ($this->counter < $this->questioncount - 1) {
             $this->counter++;
         } else {
-            toastr()->success('تم إجراء الاختبار بنجاح');
+            toast()->success('تم إجراء الاختبار بنجاح');
             return redirect('student_exams');
         }
 
